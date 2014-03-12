@@ -1,4 +1,4 @@
-This Gist is just a minimal repro of a bug (I think) in Django's LiveServerTestCase.
+This Gist is just a minimal repro of a bug (I think) in Django's LiveServerTestCase, on Windows.
 
 Once a site has some static files (eg CSS), then clicking on a link produces an ugly uncaught exception from the LiveServer thread, like this:
 
@@ -22,3 +22,9 @@ Traceback (most recent call last):
     return self._sock.recv_into(b)
 ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
 ```
+
+to repro, just run `python manage.py test`
+
+dependencies: selenium.
+
+bug observed on Windows XP.  Also reported on Windows 7.  doesn't happen on linux.
